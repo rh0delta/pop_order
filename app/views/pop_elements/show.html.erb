@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @pop_element.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @pop_element.price %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= "#{@pop_element.master_type}/#{@pop_element.sub_type}" %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @pop_element.availability %>
+</p>
+
+<%= link_to 'Edit', edit_pop_element_path(@pop_element) %> |
+<%= link_to 'Back', pop_elements_path %>

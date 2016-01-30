@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PopOrder</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/orders">POP Order System</a>
+        <% if current_user && current_page?(controller: 'orders', action: 'index') %>
+          <%= link_to "Select POP Elements", pick_path, class: 'navbar-brand' %>
+        <% end %>
+      </div>
+      <ul class="nav pull-right">
+        <li>
+          <div id="user_nav">
+            <% if user_signed_in? %>
+              <%= current_user.email %>
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger btn-mini' %>
+            <% else %>
+              <%= link_to new_user_registration_path do %>
+                <button class="btn btn-primary">Sign Up</button>
+              <% end %>
+            or
+              <%= link_to new_user_session_path do %>
+                <button class="btn btn-primary">Sign In</button>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

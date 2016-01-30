@@ -1,0 +1,30 @@
+<h1>Your Cart</h1>
+
+
+<% unless @cart %>
+  <p>
+    Your cart is currently empty.
+  </p>
+<%else%>
+  <%= link_to 'Empty Cart', cart_clear_path %>
+  <br><br><br>
+  <ul>
+    <% @cart.each do |cart| %>
+      <% product = PopElement.find_by_id!(cart.item_id) %>
+      <li>
+        <%= link_to product.name, product %>
+        <p>
+          Price: <%= number_to_currency(product.price, :unit => '$') %>
+        </p>
+        <p>
+          Availability: <%= in_stock?(product) %>
+        </p>
+        <p>
+          Quantity: <%= cart.item_quantity %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Continue Shopping', pick_path %>
