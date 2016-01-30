@@ -1,7 +1,6 @@
 <h1>Your Cart</h1>
 
-
-<% unless @cart %>
+<% if @cart.items.empty? %>
   <p>
     Your cart is currently empty.
   </p>
@@ -9,8 +8,8 @@
   <%= link_to 'Empty Cart', cart_clear_path %>
   <br><br><br>
   <ul>
-    <% @cart.each do |cart| %>
-      <% product = PopElement.find_by_id!(cart.item_id) %>
+    <% @cart.items.each do |id, quantity| %>
+      <% product = PopElement.find_by_id!(id) %>
       <li>
         <%= link_to product.name, product %>
         <p>
@@ -20,7 +19,7 @@
           Availability: <%= in_stock?(product) %>
         </p>
         <p>
-          Quantity: <%= cart.item_quantity %>
+          Quantity: <%= quantity %>
         </p>
       </li>
     <% end %>

@@ -33,11 +33,9 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to order_path, notice: 'Order was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
