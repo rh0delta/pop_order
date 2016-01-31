@@ -3,7 +3,6 @@ class CartsController < ApplicationController
 
   def add
     @cart = Cart.find_or_create_by(order_id: params[:order_id])
-    binding.pry
     id = params[:id]
     items = @cart.items
     if items[id]

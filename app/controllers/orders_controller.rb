@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
       else
         format.html { render :new }
       end
@@ -45,11 +45,9 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
+        format.html { redirect_to orders_path, notice: 'Order was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end

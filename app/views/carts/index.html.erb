@@ -1,6 +1,6 @@
 <h1>Your Cart</h1>
 
-<% if @cart.items.empty? %>
+<% if @cart.nil? || @cart.items.empty? %>
   <p>
     Your cart is currently empty.
   </p>
