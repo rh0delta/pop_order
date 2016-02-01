@@ -22,4 +22,9 @@ class CartsController < ApplicationController
   def index
     @cart = Cart.find_by_order_id(params[:order_id])
   end
+
+  def checkout
+    CheckoutMailer.checkout_email(current_user, params[:order_id]).deliver
+    redirect_to root_url, notice: 'Email sent!'
+  end
 end

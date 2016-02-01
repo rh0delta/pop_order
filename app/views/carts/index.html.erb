@@ -25,5 +25,5 @@
     <% end %>
   </ul>
 <% end %>
-
+<%= link_to 'Checkout', cart_checkout_path(order_id: @cart.order_id), class: 'btn btn-success' %>
 <%= link_to 'Continue Shopping', pick_path %>

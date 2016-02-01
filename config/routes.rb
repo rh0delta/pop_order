@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#index'
   get '/cart/clear' => 'carts#clearCart'
   post '/cart/add' => 'carts#add'
+  get '/cart/checkout' => 'carts#checkout'
 
   resources :stores
   devise_for :users
